@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="theme-next pisces use-motion">
+<head>
+  <title>wakaka</title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="theme-color" content="#222">
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
+  <link href="/css/pisces.css?v=5.1.4" rel="stylesheet" type="text/css"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <meta name="description">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="wakaka">
+  <meta property="og:url">
+  <meta property="og:site_name" content="wakaka">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="article:author" content="Docs4dev">
+  <meta name="twitter:card">
+
+  <script type="text/javascript" id="hexo.configurations">
+    var scheme = "Pisces";
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: scheme,
+      version: '5.1.4',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "b2t": false,
+        "scrollpercent": false,
+        "onmobile": false
+      },
+      fancybox: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
+    };
+  </script>
+  <link rel="canonical" href=""/>
+  <meta name="generator" content="Docs4dev template engine">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  
+  <header id="header" class="header">
+    <div class="header-inner">
+      <div class="site-brand-wrapper">
+        <div class="site-meta ">
+          <div class="custom-logo-site-title">
+            <a href="/" class="brand" rel="start">
+              <span class="logo-line-before"><i></i></span>
+              <span class="site-title">wakaka</span>
+              <span class="logo-line-after"><i></i></span>
+            </a>
+          </div>
+          <p class="site-subtitle"></p>
+        </div>
+
+        <div class="site-nav-toggle">
+          <button>
+            <span class="btn-bar"></span>
+            <span class="btn-bar"></span>
+            <span class="btn-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="site-nav">
+        <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+            <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
+              <span>首页</span>
+            </a>
+          </li>
+          <li class="menu-item menu-item-archives">
+            <a href="/archives" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
+              <span>归档</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main" class="main">
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+
+          <section id="posts" class="posts-expand">
+            <article class="post post-type-normal">
+              <div class="post-block">
+                <header class="post-header">
+                  <h1 class="post-title" itemprop="name headline">Hello World</h1>
+                  <div class="post-meta">
+                    <span class="post-time">
+                      <span class="post-meta-item-icon">
+                        <i class="fa fa-calendar-o"></i>
+                      </span>
+                      <span class="post-meta-item-text">Posted on</span>
+                      <time title="Post created" itemprop="dateCreated datePublished"
+                            datetime="2020-07-09T08:57:29"
+                      >2020-07-09T08:57:29</time>
+                    </span>
+                    <span class="post-category">
+                      <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                        <i class="fa fa-folder-o"></i>
+                      </span>
+                      <span class="post-meta-item-text">In</span>
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                        <a href="/categories/base/page_1.html" itemprop="url" rel="index">
+                          <span itemprop="name">基础</span>
+                        </a>
+                      </span>
+                    </span>
+                  </div>
+                </header>
+                <div class="post-body" itemprop="articleBody"><p><strong>一条MySQL更新语句的执行过程是什么样的？</strong></p>
+<p></p>
+<p><strong>1.连接验证及解析</strong></p>
+<p>客户端与MySQL Server建立连接，发送语句给MySQL Server，接收到后如果是查询语句会先去查询缓存中看，有的话就直接返回了，（新版本的MySQL已经废除了查询缓存，命中率太低了），如果是缓存没有或者是非查询语句，会创建一个解析树，然后进行优化，（解析器知道语句是要执行什么，会评估使用各种索引的代价，然后去使用索引，以及调节表的连接顺序）然后调用innodb引擎的接口来执行语句。</p>
+<p><strong>2.写undo log</strong></p>
+<p>innodb 引擎首先开启事务，对旧数据生成一个UPDATE的语句(如果是insert会生成delete语句)，用于提交失败后回滚，写入undo log，得到回滚指针，并且更新这个数据行的回滚指针和事务id。（事务提交后，Undo log并不能立马被删除，而是放入待清理的链表，由purge 线程判断是否有其他事务在使用undo 段中表的上一个事务之前的版本信息，决定是否可以清理undo log的日志空间，简单的说就是看之前的事务是否提交成功，这个事务及之前的事务都提交成功了，这部分undo log才能删除。）</p>
+<p><strong>3.从索引中查找数据</strong></p>
+<p>根据索引去B+树中找到这一行数据（如果是普通索引，查到不符合条件的索引，会把所有数据查找出来，唯一性索引查到第一个数据就可以了）</p>
+<p><strong>4.更新数据</strong></p>
+<p>判断数据页是否在内存中</p>
+<p><strong>4.1数据页在内存中</strong></p>
+<p>索引是</p>
+<p><strong>4.1.1普通索引</strong></p>
+<p>直接更新内存中的数据页</p>
+<p><strong>4.1.2唯一性索引</strong></p>
+<p>判断更新后是否会数据冲突，不会的话就更新内存中的数据页。</p>
+<p><strong>4.2数据页不在内存中</strong></p>
+<p>索引是</p>
+<p><strong>4.2.1普通索引</strong></p>
+<p>将对数据页的更新操作记录到change buffer，change buffer会在空闲时异步更新到磁盘。</p>
+<p><strong>4.2.2唯一性索引</strong></p>
+<p>因为需要保证更新后的唯一性，所以不能延迟更新，必须把数据页从磁盘加载到内存，然后判断更新后是否会数据冲突，不会的话就更新数据页。</p>
+<p><strong>5.写undo log（prepare状态）</strong></p>
+<p>将对数据页的更改写入到redo log，将redo log设置为prepare状态。</p>
+<p><strong>6.写bin log（commit状态）</strong></p>
+<p>通知MySQL server已经更新操作写入到redo log 了，随时可以提交，将执行的SQL写入到bin log日志，将redo log改成commit状态，事务提交成功。</p>
+<p><strong>undo log</strong></p>
+<p>主要是保证事务的原子性，事务执行失败就回滚，用于在事务执行失败后，对数据回滚。</p>
+<p>是逻辑日志，记录的是SQL</p>
+<p>在事务提交后，undo log日志不会立即删除，会放到一个待删除的链表中，有purge线程判断是否有其他事务在使用上一个事务之前的版本信息，然后决定是否可以清理，简单的来说就是前面的事务都提交成功了，这些undo才能删除。</p>
+<p><strong>change buffer是什么（就是将更新数据页的操作缓存下来）</strong></p>
+<p>在更新数据时，</p>
+<p>如果数据行所在的数据页在内存中，直接更新内存中的数据页。</p>
+<p>如果不在内存中，为了减少磁盘IO的次数，innodb会将这些更新操作缓存在change buffer中，在下一次查询时需要访问这个数据页时，在执行change buffer中的操作对数据页进行更新。</p>
+<p>适合写多读少的场景，因为这样即便立即写了，也不太可能会被访问到，延迟更新可以减少磁盘I/O，只有普通索引会用到，因为唯一性索引，在更新时就需要判断唯一性，所以没有必要。</p>
+<p><strong>redo log</strong></p>
+<p>就是为了保证事务的持久性，在做数据更新操作时，先将对数据页的更改记录到redo log，然后再去更新内存中的数据页，在下次查询数据页或者空闲时间，将操作记录更新到磁盘。这样可以将随机I/O改为顺序I/O。</p>
+<p>优点是减少磁盘I/O次数，即便发生故障也可以根据redo log来将数据恢复到最新状态。</p>
+<p>缺点是会造成内存脏页，后台线程会自动对脏页刷盘，或者是淘汰数据页时刷盘，此时会暂时查询操作，影响查询。</p>
+<p><strong>二段提交制</strong></p>
+<p>更新时，先改内存中的数据页，将更新操作写入redo log日志，此时redo log进入prepare状态，然后通知MySQL Server执行完了，随时可以提交，MySQL Server将更新的SQL写入bin log，然后调用innodb接口将redo log设置为提交状态，更新完成。</p>
+<p>如果只是写了bin log就提交，那么忽然发生故障，主节点可以根据redo log恢复数据到最新，但是主从同步时会丢掉这部分更新的数据。</p>
+<p>如果只是写binlog，然后写redo log，如果忽然发生故障，主节点根据redo log恢复数据时就会丢掉这部分数据。</p>
+<p><strong>崩溃恢复时的判断规则（以redolog是否commit或者binlog是否完整来确定）</strong></p>
+<ol>
+<li>如果 redo log 里面的事务是完整的，也就是已经有了 commit 标识，则直接提交；</li>
+<li>如果 redo log 里面的事务只有完整的 prepare，则判断对应的事务 binlog 是否存在并完整： a. 如果是，则提交事务； b. 否则，回滚事务。</li>
+</ol>
+<p>参考资料：</p>
+<p><strong>https://gsmtoday.github.io/2019/02/08/how-update-executes-in-mysql/</strong></p>
+<p><strong>https://www.infoq.cn/article/M6g1yjZqK6HiTIl_9bex</strong></p>
+</div>
+                <footer class="post-footer">
+                  <div class="post-tags">
+                    <a rel="tag"
+                       href="/tags/innodb/page_1.html">innodb</a><a rel="tag"
+                       href="/tags/mysql/page_1.html">MySQL</a>
+                  </div>
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+                      
+                    </div>
+                    <span class="post-nav-divider"></span>
+                    <div class="post-nav-prev post-nav-item">
+                      
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </article>
+          </section>
+
+        </div>
+      </div>
+
+      
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li>
+      </ul>
+
+      
+  <section class="site-overview-wrap sidebar-panel">
+    <div class="site-overview">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <img class="site-author-image"
+             itemprop="image"
+             src="/images/avatar.gif"
+             alt="avatar"/>
+        <p class="site-author-name" itemprop="name">Docs4dev</p>
+        <p class="site-description motion-element" itemprop="description"></p>
+      </div>
+      <nav class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <a href="/archives">
+            <span class="site-state-item-count">1</span>
+            <span class="site-state-item-name">文章</span>
+          </a>
+        </div>
+        <div class="site-state-item site-state-categories">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">分类</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">标签</span>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+
+      <!--noindex-->
+      <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc">
+          <div class="post-toc-content">
+            <ol class="nav">
+              <li class="nav-item nav-level-2">
+                <a class="nav-link" href="#Quick-Start">
+                  <span class="nav-number">1.</span> <span class="nav-text">Quick Start</span>
+                </a>
+                <ol class="nav-child">
+                  <li class="nav-item nav-level-3">
+                    <a class="nav-link" href="#Create-a-new-post">
+                      <span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-level-3">
+                    <a class="nav-link" href="#Run-server">
+                      <span class="nav-number">1.2.</span>
+                      <span class="nav-text">Run server</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-level-3">
+                    <a class="nav-link" href="#Generate-static-files">
+                      <span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-level-3">
+                    <a class="nav-link" href="#Deploy-to-remote-sites">
+                      <span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span>
+                    </a>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <!--/noindex-->
+    </div>
+  </aside>
+
+
+    </div>
+  </main>
+
+  
+  <footer id="footer" class="footer">
+    <div class="footer-inner">
+      <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <span class="with-love">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="author" itemprop="copyrightHolder">Docs4dev</span>
+      </div>
+      <div class="powered-by">Powered by <a class="theme-link" target="_blank"
+                                            href="https://www.docs4dev.com">Docs4dev</a></div>
+      <span class="post-meta-divider">|</span>
+      <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank"
+                                               href="https://github.com/docs4dev/theme-next">NexT</a> v5.1.4
+      </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+  </div>
+
+</div>
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+</body>
+</html>
